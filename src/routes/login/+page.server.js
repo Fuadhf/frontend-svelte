@@ -22,6 +22,7 @@ export const actions = {
             });
 
             const result = await response.json();
+            console.log(result);
             
             if (!response.ok) {
                 // Jika respons tidak ok, kembalikan error
