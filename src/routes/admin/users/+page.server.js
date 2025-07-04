@@ -5,10 +5,8 @@ export async function load({ fetch, cookies }) {
 
     // Mengirim permintaan dengan token
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/users`, {
-        headers: {
-            'Authorization': `${token}`,
-            'Content-Type': 'application/json'
-        }
+        method: 'GET',
+        credentials: 'include'
     });
 
     const result = await response.json();
