@@ -1,7 +1,5 @@
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, cookies }) {
-    // Ambil token dari cookie
-    const token = cookies.get('token');
 
     // Mengirim permintaan dengan token
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/users`, {
@@ -22,13 +20,12 @@ export const actions = {
     delete: async ({ request, cookies }) => {
         const formData = await request.formData();
         const id = formData.get('id');
-        const token = cookies.get('token');
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/user/${id}`, {
+            await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/user/${id}`, {
                 method: 'DELETE',
+                credentials: 'include',
                 headers: {
-                    'Authorization': `${token}`,
                     'Content-Type': 'application/json',
                 }
             });
