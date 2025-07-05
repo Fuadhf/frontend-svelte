@@ -11,9 +11,9 @@ export const actions = {
 
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/user`, {
         method: 'POST',
-        Cookie: `token=${token}`,
         headers: {
           'Content-Type': 'application/json',
+          Cookie: `token=${token}`,
         },
         body: JSON.stringify({
           name,
