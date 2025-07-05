@@ -8,6 +8,7 @@ export async function load({ fetch, cookies }) {
     });
 
     const result = await response.json();
+    console.log("respon result", result);
 
     // Assign response data to users
     const users = result.data;
