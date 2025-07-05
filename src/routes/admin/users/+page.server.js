@@ -25,6 +25,7 @@ export const actions = {
     delete: async ({ request, cookies }) => {
         const formData = await request.formData();
         const id = formData.get('id');
+        const token = cookies.get("token")
 
         try {
             await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/user/${id}`, {
