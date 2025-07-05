@@ -29,9 +29,9 @@ export const actions = {
         try {
             await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/user/${id}`, {
                 method: 'DELETE',
-                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
+                    Cookie: `token=${token}`,
                 }
             });
             return { success: true };
