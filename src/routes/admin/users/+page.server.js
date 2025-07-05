@@ -1,10 +1,14 @@
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, cookies }) {
+    const token = cookies.get("token")
+    console.log(token);
 
     // Mengirim permintaan dengan token
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/users`, {
         method: 'GET',
-        credentials: 'include'
+        headers: {
+            Cookie: `token=${token}`
+        }
     });
 
     const result = await response.json();

@@ -3,6 +3,7 @@ import { fail } from '@sveltejs/kit';
 export const actions = {
   create: async ({ request, cookies}) => {
     try {
+      const token = cookies.get('token')
       const formData = await request.formData();
       const name = formData.get('name');
       const email = formData.get('email');
@@ -10,7 +11,7 @@ export const actions = {
 
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/admin/user`, {
         method: 'POST',
-        credentials: 'include',
+        Cookie: `token=${token}`,
         headers: {
           'Content-Type': 'application/json',
         },
